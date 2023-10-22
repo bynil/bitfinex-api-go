@@ -52,6 +52,7 @@ type Client struct {
 	Pulse          PulseService
 	Invoice        InvoiceService
 	Market         MarketService
+	User           UserService
 
 	Synchronous
 }
@@ -127,6 +128,7 @@ func NewClientWithSynchronousURLNonce(sync Synchronous, url string, nonce utils.
 	c.Pulse = PulseService{Synchronous: c, requestFactory: c}
 	c.Invoice = InvoiceService{Synchronous: c, requestFactory: c}
 	c.Market = MarketService{Synchronous: c, requestFactory: c}
+	c.User = UserService{Synchronous: c, requestFactory: c}
 	return c
 }
 

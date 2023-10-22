@@ -142,6 +142,10 @@ func BValOrFalse(in interface{}) (out bool) {
 		if v == "1" {
 			out = true
 		}
+	case float64:
+		if v == 1 {
+			out = true
+		}
 	default:
 		if v, ok := in.(bool); ok {
 			out = v
