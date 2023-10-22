@@ -29,22 +29,14 @@ func (cr *CancelRequest) MarshalJSON() ([]byte, error) {
 }
 
 type CancelAllRequest struct {
-	Symbol string
+	Currency string
 }
 
 func (cr *CancelAllRequest) ToJSON() ([]byte, error) {
 	resp := struct {
-		Symbol string `json:"symbol"`
+		Currency string `json:"currency"`
 	}{
-		Symbol: cr.Symbol,
+		Currency: cr.Currency,
 	}
 	return json.Marshal(resp)
-}
-
-func (cr *CancelAllRequest) MarshalJSON() ([]byte, error) {
-	b, err := cr.ToJSON()
-	if err != nil {
-		return nil, err
-	}
-	return []byte(fmt.Sprintf("[0, \"foc\", null, %s]", string(b))), nil
 }
