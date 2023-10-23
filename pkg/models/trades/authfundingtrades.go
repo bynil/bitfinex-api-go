@@ -68,7 +68,7 @@ func AFTEFromRaw(raw []interface{}) (AuthFundingTradeExecuted, error) {
 // AFTSnapshotFromRaw maps raw data slice to authenticated funding trade data structures
 func AFTSnapshotFromRaw(raw [][]interface{}) (AuthFundingTradeSnapshot, error) {
 	if len(raw) == 0 {
-		return AuthFundingTradeSnapshot{}, fmt.Errorf("data slice too short for funding trade snapshot: %#v", raw)
+		return AuthFundingTradeSnapshot{}, nil
 	}
 
 	snap := make([]AuthFundingTrade, 0)

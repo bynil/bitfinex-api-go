@@ -45,7 +45,7 @@ func FromRaw(raw []interface{}) (ft *FundingTrade, err error) {
 
 func SnapshotFromRaw(raw []interface{}) (snap *Snapshot, err error) {
 	if len(raw) == 0 {
-		return snap, fmt.Errorf("data slice too short for funding trade")
+		return &Snapshot{}, nil
 	}
 
 	fts := make([]*FundingTrade, 0)

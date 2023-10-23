@@ -196,9 +196,9 @@ func TestSnapshotFromRaw(t *testing.T) {
 	}{
 		"invalid pld": {
 			pld:      []interface{}{},
-			expected: nil,
+			expected: &fundingoffer.Snapshot{},
 			err: func(t *testing.T, err error) {
-				assert.NotNil(t, err)
+				assert.Nil(t, err)
 			},
 		},
 		"rest funding offer hist": {

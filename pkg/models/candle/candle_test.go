@@ -51,8 +51,9 @@ func TestSnapshotFromRaw(t *testing.T) {
 		payload := [][]interface{}{}
 
 		c, err := candle.SnapshotFromRaw("tBTCUSD", common.FiveMinutes, payload)
-		require.NotNil(t, err)
-		require.Nil(t, c)
+		require.Nil(t, err)
+		require.NotNil(t, c)
+		require.Len(t, c.Snapshot, 0)
 	})
 
 	t.Run("valid arguments", func(t *testing.T) {

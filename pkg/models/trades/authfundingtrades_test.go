@@ -137,7 +137,7 @@ func TestAuthFundingTradeSnapshotFromRaw(t *testing.T) {
 			pld:      [][]interface{}{},
 			expected: trades.AuthFundingTradeSnapshot{},
 			err: func(t *testing.T, err error) {
-				assert.Error(t, err)
+				assert.NoError(t, err)
 			},
 		},
 		"valid payload": {

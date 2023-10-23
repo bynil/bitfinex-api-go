@@ -35,7 +35,7 @@ type Snapshot struct {
 
 func SnapshotFromRaw(symbol string, raw [][]interface{}) (*Snapshot, error) {
 	if len(raw) == 0 {
-		return nil, fmt.Errorf("data slice too short for ticker snapshot: %#v", raw)
+		return &Snapshot{}, nil
 	}
 
 	snap := make([]*Ticker, 0)

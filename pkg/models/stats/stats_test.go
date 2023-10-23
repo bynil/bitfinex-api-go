@@ -36,8 +36,8 @@ func TestNewStatsSnapshotFromRaw(t *testing.T) {
 		payload := []interface{}{}
 
 		got, err := stats.SnapshotFromRaw(payload)
-		require.NotNil(t, err)
-		require.Nil(t, got)
+		require.Nil(t, err)
+		require.Len(t, got, 0)
 	})
 
 	t.Run("invalid arguments #2", func(t *testing.T) {

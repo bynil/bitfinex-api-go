@@ -47,7 +47,7 @@ func FromRaw(raw []interface{}) (o *Ledger, err error) {
 // service and tries to convert it into an Snapshot.
 func SnapshotFromRaw(raw []interface{}, t transformerFn) (s *Snapshot, err error) {
 	if len(raw) == 0 {
-		return s, fmt.Errorf("data slice too short for ledgers: %#v", raw)
+		return &Snapshot{}, nil
 	}
 
 	lss := make([]*Ledger, 0)

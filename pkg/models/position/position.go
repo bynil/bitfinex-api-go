@@ -96,7 +96,7 @@ func CancelFromRaw(raw []interface{}) (Cancel, error) {
 
 func SnapshotFromRaw(raw []interface{}) (s *Snapshot, err error) {
 	if len(raw) == 0 {
-		return s, fmt.Errorf("data slice too short for position: %#v", raw)
+		return &Snapshot{}, nil
 	}
 
 	ps := make([]*Position, 0)

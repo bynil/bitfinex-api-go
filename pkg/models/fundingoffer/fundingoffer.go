@@ -88,7 +88,7 @@ func UpdateFromRaw(raw []interface{}) (Update, error) {
 
 func SnapshotFromRaw(raw []interface{}) (snap *Snapshot, err error) {
 	if len(raw) == 0 {
-		return snap, fmt.Errorf("data slice too short for funding offer: %#v", raw)
+		return &Snapshot{}, nil
 	}
 
 	fos := make([]*Offer, 0)

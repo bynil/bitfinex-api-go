@@ -24,7 +24,7 @@ func FromRaw(raw []interface{}) (*Stat, error) {
 
 func SnapshotFromRaw(raw []interface{}) (snap []*Stat, err error) {
 	if len(raw) == 0 {
-		return snap, fmt.Errorf("data slice too short for stats: %#v", raw)
+		return snap, nil
 	}
 
 	stats := make([]*Stat, 0)

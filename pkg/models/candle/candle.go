@@ -26,7 +26,7 @@ type Snapshot struct {
 
 func SnapshotFromRaw(symbol string, resolution common.CandleResolution, raw [][]interface{}) (*Snapshot, error) {
 	if len(raw) <= 0 {
-		return nil, fmt.Errorf("data slice too short for candle snapshot: %#v", raw)
+		return &Snapshot{}, nil
 	}
 
 	snap := make([]*Candle, 0)

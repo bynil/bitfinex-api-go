@@ -41,7 +41,7 @@ type Snapshot struct {
 
 func SnapshotFromRaw(symbol, precision string, raw [][]interface{}, rawNumbers interface{}) (*Snapshot, error) {
 	if len(raw) <= 0 {
-		return nil, fmt.Errorf("data slice too short for book snapshot: %#v", raw)
+		return &Snapshot{}, nil
 	}
 
 	snap := make([]*Book, len(raw))

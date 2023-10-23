@@ -50,8 +50,8 @@ func TestFundingTradeSnapshotFromRaw(t *testing.T) {
 	t.Run("invalid arguments", func(t *testing.T) {
 		payload := []interface{}{}
 		got, err := fundingtrade.SnapshotFromRaw(payload)
-		require.NotNil(t, err)
-		require.Nil(t, got)
+		require.Nil(t, err)
+		require.Len(t, got.Snapshot, 0)
 	})
 
 	t.Run("partially valid arguments", func(t *testing.T) {

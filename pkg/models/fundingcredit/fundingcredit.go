@@ -97,7 +97,7 @@ func CancelFromRaw(raw []interface{}) (Cancel, error) {
 
 func SnapshotFromRaw(raw []interface{}) (snap *Snapshot, err error) {
 	if len(raw) == 0 {
-		return snap, fmt.Errorf("data slice too short for funding credit: %#v", raw)
+		return &Snapshot{}, nil
 	}
 
 	fcs := make([]*Credit, 0)

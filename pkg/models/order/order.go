@@ -118,7 +118,7 @@ func CancelFromRaw(raw []interface{}) (Cancel, error) {
 // service and tries to convert it into an Snapshot.
 func SnapshotFromRaw(raw []interface{}) (s *Snapshot, err error) {
 	if len(raw) == 0 {
-		return s, fmt.Errorf("data slice too short for order: %#v", raw)
+		return &Snapshot{}, nil
 	}
 
 	os := make([]*Order, 0)
