@@ -53,6 +53,7 @@ type Client struct {
 	Invoice        InvoiceService
 	Market         MarketService
 	User           UserService
+	KeyInfo        KeyInfoService
 
 	Synchronous
 }
@@ -129,6 +130,7 @@ func NewClientWithSynchronousURLNonce(sync Synchronous, url string, nonce utils.
 	c.Invoice = InvoiceService{Synchronous: c, requestFactory: c}
 	c.Market = MarketService{Synchronous: c, requestFactory: c}
 	c.User = UserService{Synchronous: c, requestFactory: c}
+	c.KeyInfo = KeyInfoService{Synchronous: c, requestFactory: c}
 	return c
 }
 
