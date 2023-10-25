@@ -57,6 +57,7 @@ const (
 	Precision1                    BookPrecision    = "P1" // Aggregate precision levels
 	Precision2                    BookPrecision    = "P2" // Aggregate precision levels
 	Precision3                    BookPrecision    = "P3" // Aggregate precision levels
+	Precision4                    BookPrecision    = "P4" // Aggregate precision levels
 	PrecisionRawBook              BookPrecision    = "R0" // Raw precision
 	// FrequencyRealtime book frequency gives updates as they occur in real-time.
 	FrequencyRealtime BookFrequency = "F0"
