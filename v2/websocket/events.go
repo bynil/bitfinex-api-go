@@ -173,6 +173,8 @@ func (c *Client) handleEvent(socketId SocketId, msg []byte) error {
 			return err
 		}
 		c.listener <- &ec
+	case "pong":
+		c.log.Info("receive pong")
 	default:
 		c.log.Warningf("unknown event: %s", msg)
 	}

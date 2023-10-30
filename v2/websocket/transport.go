@@ -92,7 +92,7 @@ func (w *ws) keepAlivePinger() {
 		case <-w.kill:
 			return
 		case <-pingTimer:
-			w.writeChan <- []byte("ping")
+			w.writeChan <- []byte("{\"event\":\"ping\"}")
 		}
 	}
 }
