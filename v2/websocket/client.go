@@ -202,7 +202,7 @@ func NewWithParamsAsyncFactoryNonce(params *Parameters, async AsynchronousFactor
 		orderbooks:     make(map[string]*Orderbook),
 		nonce:          nonce,
 		parameters:     params,
-		listener:       make(chan interface{}, 1000),
+		listener:       make(chan interface{}, 10000),
 		terminal:       false,
 		shutdown:       nil,
 		sockets:        make(map[SocketId]*Socket),
