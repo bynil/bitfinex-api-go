@@ -5,12 +5,18 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/url"
+	"sync"
+)
+
+var (
+	RequestMutexEnabled = true
 )
 
 type HttpTransport struct {
 	BaseURL    *url.URL
 	HTTPClient *http.Client
 	httpDo     func(c *http.Client, req *http.Request) (*http.Response, error)
+	reqMutex   sync.Mutex
 }
 
 func (h HttpTransport) Request(req Request) ([]interface{}, error) {
@@ -45,7 +51,11 @@ func (h HttpTransport) Request(req Request) ([]interface{}, error) {
 }
 
 // Do executes API request created by NewRequest method or custom *http.Request.
-func (h HttpTransport) do(req *http.Request, v interface{}) (error) {
+func (h HttpTransport) do(req *http.Request, v interface{}) error {
+	if RequestMutexEnabled {
+		h.reqMutex.Lock()
+		defer h.reqMutex.Unlock()
+	}
 	resp, err := h.httpDo(h.HTTPClient, req)
 	if err != nil {
 		return err
