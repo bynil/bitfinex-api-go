@@ -135,8 +135,9 @@ func (fs *FundingService) CreditsHistory(symbol string) (*fundingcredit.Snapshot
 
 // Retreive all of the matched funding trades
 // see https://docs.bitfinex.com/reference#rest-auth-funding-trades-hist for more info
-func (fs *FundingService) Trades(symbol string) (*fundingtrade.Snapshot, error) {
-	req, err := fs.requestFactory.NewAuthenticatedRequest(common.PermissionRead, path.Join("funding/trades", symbol, "hist"))
+func (fs *FundingService) Trades(symbol string, page *PageQuery) (*fundingtrade.Snapshot, error) {
+	payload := page.ToPayload()
+	req, err := fs.requestFactory.NewAuthenticatedRequestWithData(common.PermissionRead, path.Join("funding/trades", symbol, "hist"), payload)
 	if err != nil {
 		return nil, err
 	}

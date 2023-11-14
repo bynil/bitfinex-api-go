@@ -29,7 +29,7 @@ func main() {
 	prior := now.Add(time.Duration(-240) * time.Hour)
 	millisStart := prior.UnixNano() / 1000000
 
-	l, err := c.Ledgers.Ledgers("BTC", millisStart, millis, 1000)
+	l, err := c.Ledgers.Ledgers("BTC", nil, &rest.PageQuery{millisStart, millis, 1000})
 	if err != nil {
 		log.Fatalf("Ledgers: %s", err)
 	}

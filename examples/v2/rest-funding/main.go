@@ -120,7 +120,7 @@ func creditsHistory(c *rest.Client) {
 }
 
 func fundingTrades(c *rest.Client) {
-	napTradesHist, err := c.Funding.Trades("fUSD")
+	napTradesHist, err := c.Funding.Trades("fUSD", nil)
 	if err != nil {
 		panic(err)
 	}
