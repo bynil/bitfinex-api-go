@@ -81,8 +81,9 @@ func (fs *FundingService) Loans(symbol string) (*fundingloan.Snapshot, error) {
 
 // Retreive all of the past in-active funding loans
 // see https://docs.bitfinex.com/reference#rest-auth-funding-loans-hist for more info
-func (fs *FundingService) LoansHistory(symbol string) (*fundingloan.Snapshot, error) {
-	req, err := fs.requestFactory.NewAuthenticatedRequest(common.PermissionRead, path.Join("funding/loans", symbol, "hist"))
+func (fs *FundingService) LoansHistory(symbol string, page *PageQuery) (*fundingloan.Snapshot, error) {
+	payload := page.ToPayload()
+	req, err := fs.requestFactory.NewAuthenticatedRequestWithData(common.PermissionRead, path.Join("funding/loans", symbol, "hist"), payload)
 	if err != nil {
 		return nil, err
 	}
@@ -117,8 +118,9 @@ func (fs *FundingService) Credits(symbol string) (*fundingcredit.Snapshot, error
 
 // Retreive all of the past in-active credits used in positions
 // see https://docs.bitfinex.com/reference#rest-auth-funding-credits-hist for more info
-func (fs *FundingService) CreditsHistory(symbol string) (*fundingcredit.Snapshot, error) {
-	req, err := fs.requestFactory.NewAuthenticatedRequest(common.PermissionRead, path.Join("funding/credits", symbol, "hist"))
+func (fs *FundingService) CreditsHistory(symbol string, page *PageQuery) (*fundingcredit.Snapshot, error) {
+	payload := page.ToPayload()
+	req, err := fs.requestFactory.NewAuthenticatedRequestWithData(common.PermissionRead, path.Join("funding/credits", symbol, "hist"), payload)
 	if err != nil {
 		return nil, err
 	}

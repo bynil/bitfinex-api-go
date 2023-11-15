@@ -89,7 +89,7 @@ func loans(c *rest.Client) {
 }
 
 func loansHistory(c *rest.Client) {
-	napLoansHist, err := c.Funding.LoansHistory("fUSD")
+	napLoansHist, err := c.Funding.LoansHistory("fUSD", nil)
 	if err != nil {
 		panic(err)
 	}
@@ -110,7 +110,7 @@ func activeCredits(c *rest.Client) {
 }
 
 func creditsHistory(c *rest.Client) {
-	napCreditsHist, err := c.Funding.CreditsHistory("fUSD")
+	napCreditsHist, err := c.Funding.CreditsHistory("fUSD", nil)
 	if err != nil {
 		panic(err)
 	}
