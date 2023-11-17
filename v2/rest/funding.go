@@ -45,8 +45,10 @@ func (fs *FundingService) Offers(symbol string) (*fundingoffer.Snapshot, error) 
 
 // Retreive all of the past in-active funding offers
 // see https://docs.bitfinex.com/reference#rest-auth-funding-offers-hist for more info
-func (fs *FundingService) OfferHistory(symbol string) (*fundingoffer.Snapshot, error) {
-	req, err := fs.requestFactory.NewAuthenticatedRequest(common.PermissionRead, path.Join("funding/offers", symbol, "hist"))
+// max 500
+func (fs *FundingService) OfferHistory(symbol string, page *PageQuery) (*fundingoffer.Snapshot, error) {
+	payload := page.ToPayload()
+	req, err := fs.requestFactory.NewAuthenticatedRequestWithData(common.PermissionRead, path.Join("funding/offers", symbol, "hist"), payload)
 	if err != nil {
 		return nil, err
 	}

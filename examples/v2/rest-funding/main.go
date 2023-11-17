@@ -68,7 +68,7 @@ func offers(c *rest.Client) {
 
 func offerHistory(c *rest.Client) {
 	// funding offer history
-	snapHist, err := c.Funding.OfferHistory("fUSD")
+	snapHist, err := c.Funding.OfferHistory("fUSD", nil)
 	if err != nil {
 		panic(err)
 	}
