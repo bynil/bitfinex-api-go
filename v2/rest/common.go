@@ -3,7 +3,7 @@ package rest
 type PageQuery struct {
 	Start int64
 	End   int64
-	Limit int32
+	Limit int
 }
 
 func (pq *PageQuery) ToPayload() map[string]interface{} {
