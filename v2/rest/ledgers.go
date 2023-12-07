@@ -19,7 +19,7 @@ var maxLimit int32 = 2500
 // Ledgers - all of the past ledger entreies
 // see https://docs.bitfinex.com/reference#ledgers for more info
 func (s *LedgerService) Ledgers(currency string, category *int32, page *PageQuery) (*ledger.Snapshot, error) {
-	if page.Limit > int(maxLimit) {
+	if page != nil && page.Limit > int(maxLimit) {
 		return nil, fmt.Errorf("Max request limit:%d, got: %d", maxLimit, page.Limit)
 	}
 
