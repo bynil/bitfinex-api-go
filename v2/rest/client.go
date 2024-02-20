@@ -210,7 +210,7 @@ func NewRequest(refURL string) Request {
 
 // Create a new request with the given method (POST | GET)
 func NewRequestWithMethod(refURL string, method string) Request {
-	return NewRequestWithDataMethod(refURL, []byte("{}"), method)
+	return NewRequestWithDataMethod(refURL, nil, method)
 }
 
 // Create a new POST request with the given bytes as body

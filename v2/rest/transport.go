@@ -29,7 +29,7 @@ func (h HttpTransport) Request(req Request) ([]interface{}, error) {
 	if req.Params != nil {
 		rel.RawQuery = req.Params.Encode()
 	}
-	if req.Data == nil {
+	if req.Data == nil && (req.Method == http.MethodPost || req.Method == http.MethodPut || req.Method == http.MethodPatch) {
 		req.Data = []byte("{}")
 	}
 	body := bytes.NewReader(req.Data)
